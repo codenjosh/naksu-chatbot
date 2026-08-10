@@ -1,11 +1,28 @@
 import os
+
 from dotenv import load_dotenv
-from google import genai 
+from google import genai
 from google.genai import types
-import ollama
+from langfuse import get_client
+from openinference.instrumentation.google_genai import GoogleGenAIInstrumentor
+
 import requests
 
+# Loads the local .env file in development. Render supplies the same variables
+# through its service Environment settings.
 load_dotenv()
+
+print("=== LANGFUSE CHECK ===")
+print("Public key exists:", bool(os.getenv("LANGFUSE_PUBLIC_KEY")))
+print("Secret key exists:", bool(os.getenv("LANGFUSE_SECRET_KEY")))
+print("Base URL:", os.getenv("LANGFUSE_BASE_URL"))
+print("======================")
+
+# Initialize Langfuse
+langfuse = get_client()
+
+# Instrument Google Gemini
+GoogleGenAIInstrumentor().instrument()
 
 # -------------------------
 # Gemini configuration
