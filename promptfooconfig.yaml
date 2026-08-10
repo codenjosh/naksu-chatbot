@@ -1,0 +1,40 @@
+# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+description: Naksu AI Gemini regression suite
+
+# Keep the free-tier Gemini requests sequential to avoid burst rate limits.
+evaluateOptions:
+  maxConcurrency: 1
+  delay: 1000
+
+prompts:
+  - "{{question}}"
+
+providers:
+  - id: file://evals/gemini_provider.py
+    label: Naksu Gemini
+
+tests:
+  - description: Answers a simple calculation correctly
+    vars:
+      question: "Answer using only the number: What is 8 multiplied by 7?"
+    assert:
+      - type: contains
+        value: "56"
+
+  - description: Gives a non-empty, plain-language explanation
+    vars:
+      question: "Explain what a Python function is in two short sentences."
+    assert:
+      - type: python
+        value: |
+          isinstance(output, str) and 20 <= len(output.strip()) <= 600
+
+  - description: Offers actionable writing feedback
+    vars:
+      question: "Improve this sentence and briefly explain the change: I has went to the market yesterday."
+    assert:
+      - type: python
+        value: |
+          isinstance(output, str) and len(output.strip()) >= 30
+      - type: contains
+        value: "went"

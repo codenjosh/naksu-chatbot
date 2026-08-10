@@ -1,0 +1,46 @@
+name: Promptfoo evaluations
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "app.py"
+      - "chatbot.py"
+      - "evals/**"
+      - "promptfooconfig.yaml"
+      - "requirements.txt"
+  pull_request:
+    paths:
+      - "app.py"
+      - "chatbot.py"
+      - "evals/**"
+      - "promptfooconfig.yaml"
+      - "requirements.txt"
+
+permissions:
+  contents: read
+
+jobs:
+  evaluate-gemini:
+    name: Evaluate Gemini responses
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+      PROMPTFOO_DISABLE_TELEMETRY: "true"
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install Python dependencies
+        run: python -m pip install --upgrade pip && python -m pip install -r requirements.txt
+
+      - name: Run Promptfoo evaluation
+        run: npx --yes promptfoo@latest eval -c promptfooconfig.yaml --no-cache
