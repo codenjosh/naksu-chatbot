@@ -1,0 +1,403 @@
+{
+  "evalId": "eval-BEj-2026-08-10T05:55:38",
+  "results": {
+    "version": 3,
+    "timestamp": "2026-08-10T05:55:38.310Z",
+    "prompts": [
+      {
+        "id": "d3bcaf71c11c2678899be04d872718325f0916b3b0705e805ee29930663a42e2",
+        "raw": "{{question}}",
+        "label": "{{question}}",
+        "provider": "Naksu Gemini",
+        "metrics": {
+          "score": 0,
+          "testPassCount": 0,
+          "testFailCount": 0,
+          "testErrorCount": 3,
+          "assertPassCount": 0,
+          "assertFailCount": 0,
+          "totalLatencyMs": 0,
+          "tokenUsage": {
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "total": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "namedScores": {},
+          "namedScoresCount": {},
+          "namedScoreWeights": {},
+          "cost": 0
+        }
+      }
+    ],
+    "results": [
+      {
+        "cost": 0,
+        "error": "Error: Worker failed to become ready within timeout\n    at Timeout._onTimeout (file:///C:/Users/JOSHUA%20NIKHIL/AppData/Local/npm-cache/_npx/81bbc6515d992ace/node_modules/promptfoo/dist/src/providers-DKidnSQu.js:17444:28)\n    at listOnTimeout (node:internal/timers:635:17)\n    at process.processTimers (node:internal/timers:571:7)",
+        "gradingResult": null,
+        "id": "90cdd661-5b98-4647-b9cb-18e39a6b39f3",
+        "latencyMs": 0,
+        "namedScores": {},
+        "prompt": {
+          "raw": "Answer using only the number: What is 8 multiplied by 7?",
+          "label": "{{question}}",
+          "config": {}
+        },
+        "promptId": "d3bcaf71c11c2678899be04d872718325f0916b3b0705e805ee29930663a42e2",
+        "promptIdx": 0,
+        "provider": {
+          "id": "file://evals/gemini_provider.py",
+          "label": "Naksu Gemini"
+        },
+        "score": 0,
+        "success": false,
+        "testCase": {
+          "description": "Answers a simple calculation correctly",
+          "vars": {
+            "question": "Answer using only the number: What is 8 multiplied by 7?"
+          },
+          "assert": [
+            {
+              "type": "contains",
+              "value": "56"
+            }
+          ],
+          "options": {},
+          "metadata": {}
+        },
+        "testIdx": 0,
+        "tokenUsage": {
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "total": 0,
+          "numRequests": 0,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "question": "Answer using only the number: What is 8 multiplied by 7?"
+        },
+        "metadata": {
+          "errorContext": {
+            "providerId": "file://evals/gemini_provider.py",
+            "providerLabel": "Naksu Gemini"
+          }
+        },
+        "failureReason": 2
+      },
+      {
+        "cost": 0,
+        "error": "Error: Worker failed to become ready within timeout\n    at Timeout._onTimeout (file:///C:/Users/JOSHUA%20NIKHIL/AppData/Local/npm-cache/_npx/81bbc6515d992ace/node_modules/promptfoo/dist/src/providers-DKidnSQu.js:17444:28)\n    at listOnTimeout (node:internal/timers:635:17)\n    at process.processTimers (node:internal/timers:571:7)",
+        "gradingResult": null,
+        "id": "8b601382-cd03-4c69-b76e-6d93d7709c5b",
+        "latencyMs": 0,
+        "namedScores": {},
+        "prompt": {
+          "raw": "Explain what a Python function is in two short sentences.",
+          "label": "{{question}}",
+          "config": {}
+        },
+        "promptId": "d3bcaf71c11c2678899be04d872718325f0916b3b0705e805ee29930663a42e2",
+        "promptIdx": 0,
+        "provider": {
+          "id": "file://evals/gemini_provider.py",
+          "label": "Naksu Gemini"
+        },
+        "score": 0,
+        "success": false,
+        "testCase": {
+          "description": "Gives a non-empty, plain-language explanation",
+          "vars": {
+            "question": "Explain what a Python function is in two short sentences."
+          },
+          "assert": [
+            {
+              "type": "python",
+              "value": "isinstance(output, str) and 20 <= len(output.strip()) <= 600\n"
+            }
+          ],
+          "options": {},
+          "metadata": {}
+        },
+        "testIdx": 1,
+        "tokenUsage": {
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "total": 0,
+          "numRequests": 0,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "question": "Explain what a Python function is in two short sentences."
+        },
+        "metadata": {
+          "errorContext": {
+            "providerId": "file://evals/gemini_provider.py",
+            "providerLabel": "Naksu Gemini"
+          }
+        },
+        "failureReason": 2
+      },
+      {
+        "cost": 0,
+        "error": "Error: Worker failed to become ready within timeout\n    at Timeout._onTimeout (file:///C:/Users/JOSHUA%20NIKHIL/AppData/Local/npm-cache/_npx/81bbc6515d992ace/node_modules/promptfoo/dist/src/providers-DKidnSQu.js:17444:28)\n    at listOnTimeout (node:internal/timers:635:17)\n    at process.processTimers (node:internal/timers:571:7)",
+        "gradingResult": null,
+        "id": "b4e90afe-5b0d-4f08-ba91-df681945a5a6",
+        "latencyMs": 0,
+        "namedScores": {},
+        "prompt": {
+          "raw": "Improve this sentence and briefly explain the change: I has went to the market yesterday.",
+          "label": "{{question}}",
+          "config": {}
+        },
+        "promptId": "d3bcaf71c11c2678899be04d872718325f0916b3b0705e805ee29930663a42e2",
+        "promptIdx": 0,
+        "provider": {
+          "id": "file://evals/gemini_provider.py",
+          "label": "Naksu Gemini"
+        },
+        "score": 0,
+        "success": false,
+        "testCase": {
+          "description": "Offers actionable writing feedback",
+          "vars": {
+            "question": "Improve this sentence and briefly explain the change: I has went to the market yesterday."
+          },
+          "assert": [
+            {
+              "type": "python",
+              "value": "isinstance(output, str) and len(output.strip()) >= 30\n"
+            },
+            {
+              "type": "contains",
+              "value": "went"
+            }
+          ],
+          "options": {},
+          "metadata": {}
+        },
+        "testIdx": 2,
+        "tokenUsage": {
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "total": 0,
+          "numRequests": 0,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "question": "Improve this sentence and briefly explain the change: I has went to the market yesterday."
+        },
+        "metadata": {
+          "errorContext": {
+            "providerId": "file://evals/gemini_provider.py",
+            "providerLabel": "Naksu Gemini"
+          }
+        },
+        "failureReason": 2
+      }
+    ],
+    "stats": {
+      "successes": 0,
+      "failures": 0,
+      "errors": 3,
+      "tokenUsage": {
+        "prompt": 0,
+        "completion": 0,
+        "cached": 0,
+        "total": 0,
+        "numRequests": 0,
+        "completionDetails": {
+          "reasoning": 0,
+          "acceptedPrediction": 0,
+          "rejectedPrediction": 0,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0
+        },
+        "assertions": {
+          "total": 0,
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "numRequests": 0,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          }
+        }
+      },
+      "durationMs": 135052,
+      "evaluationDurationMs": 135052
+    }
+  },
+  "config": {
+    "tags": {},
+    "description": "Naksu AI Gemini regression suite",
+    "prompts": [
+      "{{question}}"
+    ],
+    "providers": [
+      {
+        "id": "file://evals/gemini_provider.py",
+        "label": "Naksu Gemini",
+        "config": {
+          "pythonExecutable": ".venv/Scripts/python.exe"
+        }
+      }
+    ],
+    "tests": [
+      {
+        "description": "Answers a simple calculation correctly",
+        "vars": {
+          "question": "Answer using only the number: What is 8 multiplied by 7?"
+        },
+        "assert": [
+          {
+            "type": "contains",
+            "value": "56"
+          }
+        ]
+      },
+      {
+        "description": "Gives a non-empty, plain-language explanation",
+        "vars": {
+          "question": "Explain what a Python function is in two short sentences."
+        },
+        "assert": [
+          {
+            "type": "python",
+            "value": "isinstance(output, str) and 20 <= len(output.strip()) <= 600\n"
+          }
+        ]
+      },
+      {
+        "description": "Offers actionable writing feedback",
+        "vars": {
+          "question": "Improve this sentence and briefly explain the change: I has went to the market yesterday."
+        },
+        "assert": [
+          {
+            "type": "python",
+            "value": "isinstance(output, str) and len(output.strip()) >= 30\n"
+          },
+          {
+            "type": "contains",
+            "value": "went"
+          }
+        ]
+      }
+    ],
+    "env": {},
+    "outputPath": [
+      "results/promptfoo-results.json"
+    ],
+    "extensions": [],
+    "metadata": {},
+    "evaluateOptions": {}
+  },
+  "shareableUrl": null,
+  "metadata": {
+    "promptfooVersion": "0.122.0",
+    "nodeVersion": "v24.19.0",
+    "platform": "win32",
+    "arch": "x64",
+    "exportedAt": "2026-08-10T05:57:53.662Z",
+    "evaluationCreatedAt": "2026-08-10T05:55:38.310Z"
+  },
+  "vars": [
+    "question"
+  ],
+  "runtimeOptions": {
+    "eventSource": "cli",
+    "showProgressBar": true,
+    "repeat": 1,
+    "maxConcurrency": 4,
+    "cache": true
+  }
+}

@@ -1,6 +1,6 @@
 import streamlit as st
 
-from chatbot import ask_gemini, ask_llama
+from chatbot import ChatbotError, ask_gemini, ask_llama
 
 
 st.set_page_config(
@@ -28,6 +28,26 @@ SUGGESTIONS = {
 
 if "messages" not in st.session_state:
     st.session_state.messages = []
+
+
+def conversation_for_request(messages, prompt, max_messages=12):
+    """Keep a valid, bounded user/assistant history for the model APIs."""
+    history = [
+        message
+        for message in messages
+        if message.get("role") in {"user", "assistant"} and message.get("content")
+    ]
+
+    # Drop a leftover user message from an earlier failed request. Failed turns
+    # are not sent to the next model call, preventing consecutive user roles.
+    if history and history[-1]["role"] == "user":
+        history.pop()
+
+    history = history[-max_messages:]
+    if history and history[0]["role"] == "assistant":
+        history = history[1:]
+
+    return [*history, {"role": "user", "content": prompt}]
 
 with st.sidebar:
     st.header("Naksu AI", divider="gray")
@@ -85,7 +105,7 @@ if chat_input:
 
 if prompt and prompt.strip():
     prompt = prompt.strip()
-    st.session_state.messages.append({"role": "user", "content": prompt})
+    request_messages = conversation_for_request(st.session_state.messages, prompt)
 
     with st.chat_message("user"):
         st.write(prompt)
@@ -94,16 +114,23 @@ if prompt and prompt.strip():
         with st.spinner(f"Naksu is thinking with {model}..."):
             try:
                 if model == "Gemini API":
-                    response = ask_gemini(st.session_state.messages)
+                    response = ask_gemini(request_messages)
                 else:
-                    response = ask_llama(st.session_state.messages)
-            except Exception:
+                    response = ask_llama(request_messages)
+            except ChatbotError as error:
+                st.error(str(error), icon=":material/error:")
+            except Exception as error:
                 st.error(
-                    "I couldn't generate a response. Check the selected model and try again.",
+                    "An unexpected error occurred. Please try again.",
                     icon=":material/error:",
                 )
+                with st.expander("Troubleshooting details", icon=":material/build:"):
+                    st.code(type(error).__name__)
             else:
                 st.write(response)
-                st.session_state.messages.append(
-                    {"role": "assistant", "content": response}
+                st.session_state.messages.extend(
+                    [
+                        {"role": "user", "content": prompt},
+                        {"role": "assistant", "content": response},
+                    ]
                 )
