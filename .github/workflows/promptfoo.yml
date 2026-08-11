@@ -2,20 +2,6 @@ name: Promptfoo evaluations
 
 on:
   workflow_dispatch:
-  push:
-    paths:
-      - "app.py"
-      - "chatbot.py"
-      - "evals/**"
-      - "promptfooconfig.yaml"
-      - "requirements.txt"
-  pull_request:
-    paths:
-      - "app.py"
-      - "chatbot.py"
-      - "evals/**"
-      - "promptfooconfig.yaml"
-      - "requirements.txt"
 
 permissions:
   contents: read

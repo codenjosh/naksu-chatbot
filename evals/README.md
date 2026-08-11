@@ -24,6 +24,6 @@ Promptfoo is a development-only tool. It is not required by the Streamlit app or
 
 ## GitHub Actions
 
-The workflow in `.github/workflows/promptfoo.yml` can be run manually from the
-Actions tab, or runs after changes to the chatbot or evaluation files. Add a
-repository secret named `GOOGLE_API_KEY` before using it.
+The workflow in `.github/workflows/promptfoo.yml` is run manually from the
+Actions tab. This avoids using up Gemini's limited free-tier quota on every
+Git push. Add a repository secret named `GOOGLE_API_KEY` before using it.
