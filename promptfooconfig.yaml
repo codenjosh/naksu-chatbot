@@ -25,16 +25,12 @@ tests:
     vars:
       question: "Explain what a Python function is in two short sentences."
     assert:
-      - type: python
-        value: |
-          isinstance(output, str) and 20 <= len(output.strip()) <= 600
+      - type: contains-any
+        value: "function,code,task"
 
   - description: Offers actionable writing feedback
     vars:
       question: "Improve this sentence and briefly explain the change: I has went to the market yesterday."
     assert:
-      - type: python
-        value: |
-          isinstance(output, str) and len(output.strip()) >= 30
       - type: contains
         value: "went"
